@@ -1,0 +1,99 @@
+<head>
+<style>
+    #must {color: red;}
+    #btn {float:left;}
+    </style></head>
+{{#unless data}}
+<center>
+<form>
+<div class="col-lg-63 mb-3">
+<div class="card">
+                  <!-- Card Header -->
+<div class="card-header">
+<h3 class="h5 mb-0">Search for Records in Consumer Affairs Database</h3>
+</div>   
+    
+<br>
+    
+<div class="form-group mb-4">
+                      
+<div style="float:left; width: 50%">
+CA Number<input type="text" class="form-control" id="customerid" name="customerid" aria-describedby="emailHelp" placeholder="Enter Consumer Affairs Number">    
+</div>
+                                          
+<div style="float:right; width: 50%">
+First Name<input type="text" id="fname" name="fname" class="form-control" placeholder="Enter First Name">
+</div>
+    
+</div>    
+                                      
+<div class="form-group mb-4">
+                      
+<div style="float:left; width: 50%">
+Last Name<input type="text" id="lname" name="lname" class="form-control form-icon-input-right" placeholder="Enter Last Name"> 
+</div>
+                                          
+<div style="float:right; width: 50%">
+Phone Number<input type="text" id="phone" name="phone" class="form-control" placeholder="Enter Phone Number">
+</div>
+    
+</div>  
+                    
+                    
+<div class="form-group mb-4">
+                      
+<div style="width: 100%">
+ Email<input type="text" id="email" name="email" class="form-control" placeholder="Enter Email Address">
+</div>
+    
+</div>    
+                    
+                    <div class="card-header">
+                    <h3 class="h5 mb-0">Date Range</h3>
+                  </div>   
+         <br>                        
+                    
+<div class="form-group mb-4">
+                      
+<div style="float:left; width: 50%">
+Start<input type="date" id="fromdate" name="fromdate" value="{{yearAgo}}" class="form-control form-icon-input-left">
+</div>
+                                          
+<div style="float:right; width: 50%">
+End<input type="date" id="todate" name="todate" value="{{fullyearReformat}}" class="form-control form-icon-input-left">
+</div>
+    
+</div>  
+        </div> 
+                </div> 
+        <input id="btn" type="submit" class="btn btn-lg btn-primary" value="Search Database Now">
+
+</form>
+    </center>
+
+<br><br><hr>
+<p>1.<b> Percent sign (%)</b> and <b>underscore ( __ )</b> can both be used for wildcard searches: </p><p>An underscore represents a single character, whereas percent can equal any number of characters.</p>
+<p>2. You <label id="must">must</label> fill out <b>at least 1</b> of the 5 boxes (CA Number, first and last name, phone, and email).</p> 
+{{/unless}}
+
+
+{{#if data}}
+<h1><b>{{data.length}} record(s)</b> found that match your criteria.</h1><hr>
+{{/if}}
+{{#each data}}
+    <h6> <li><a href="detail?q={{this.CANumber}}#cont"><b>Customer ID: {{this.CANumber}}</b></a></li> </h6>
+    <h6> <li>Name: {{this.FirstName}} {{this.LastName}} </li></h6>
+
+
+{{#if this.PhoneNumber}}
+    <h6> <li>Phone: {{this.PhoneNumber}}</li> </h6>
+{{/if}}
+{{#if this.Address1}}
+    <h6> <li>Address: {{this.Address1}}</li> </h6>
+{{/if}}
+{{#if this.EmailAddress}}
+    <h6> <li>Address: {{this.EmailAddress}}</li> </h6>
+{{/if}}
+    <h6> <li>Received on: {{this.ReceiveDate.[5]}}{{this.ReceiveDate.[6]}}-{{this.ReceiveDate.[8]}}{{this.ReceiveDate.[9]}}-{{this.ReceiveDate.[0]}}{{this.ReceiveDate.[1]}}{{this.ReceiveDate.[2]}}{{this.ReceiveDate.[3]}}</li> </h6>
+<hr>
+{{/each}}

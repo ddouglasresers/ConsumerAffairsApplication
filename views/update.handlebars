@@ -1,0 +1,323 @@
+<style>
+#ProductName{
+  text-transform: uppercase;
+}
+    
+      th{color:black;}
+</style>
+
+<link rel="stylesheet" href="icons.css">
+
+<h2>Update for CA #{{data.CANumber}}.</h2>
+
+<form method="POST">
+ <table class="table table-bordered"><thead class="bg-light"><tr><th >Receive Date</th><th >CA Agent</th><th >Product Name</th><th >UPC</th></tr></thead> 
+           <td><i class="material-icons">
+today 
+</i> &nbsp<input type="date" id="ReceiveDate" name="ReceiveDate" value="{{data.ReceiveDate}}"></td>
+  
+<td>   <i class="material-icons">
+person_pin
+</i> &nbsp
+    <select id="CAAgent" name="CAAgent" required>
+   <option selected="selected">{{data.CAAgent}}</option>
+        {{#each caAgent}}
+  <option value="{{this.caagent}}">{{this.caagent}}</option>
+        {{/each}}
+</select>
+</td>
+           <td><i class="material-icons">
+fastfood
+</i> &nbsp<input type="text" id="ProductName" name="ProductName" value="{{data.ProductName}}" required></td>
+        
+             <td><i class="material-icons">
+language
+</i>&nbsp<input type="text" id="UPC" name="UPC" value="{{data.UPC}}"></td>
+    
+        </table>  <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >UBD</th><th>Size</th><th >Time</th></tr></thead>
+    
+           <td><i class="material-icons">today </i> &nbsp<input type="text" id="UBD" name="UBD"  value="{{data.UBD}}"></td>
+                 <td><i class="material-icons">
+square_foot
+</i>&nbsp<input type="text" style="width: 70%" id="PackSize" name="PackSize"  value="{{data.PackSize}}"></td>
+           <td><i class="material-icons">
+access_time
+</i>&nbsp<input type="text" style="width: 55%" id="Time" name="Time" value="{{data.Time}}"></td>     
+                </table> 
+        
+        <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th>Report Code</th><th>Plant</th><th>Product Comments</th></tr></thead>
+        
+    
+            <td><i class="material-icons">
+report
+</i>&nbsp    
+    <select id="ReportCodes" name="ReportCodes" required>
+   <option selected="selected">{{data.ReportCode}}</option>
+        {{#each reportCodes}}
+  <option value="{{this.reportcode}}">{{this.reportcode}}</option>
+        {{/each}}
+</select>
+</td>
+    
+        <td> <i class="material-icons">
+store
+</i>   &nbsp
+    <select id="PlantNum" name="PlantNum" required>
+   <option selected="selected">{{data.Plant}}</option>
+        {{#each plantNums}}
+  <option value="{{this.plant}}">{{this.plant}}</option>
+        {{/each}}
+</select>
+</td>
+<td>  <i class="material-icons">
+announcement
+</i>  &nbsp
+            <textarea id="ProductComments" name="ProductComments" rows="5" cols="85" required>{{#if data.ProductComments}}{{data.ProductComments}}{{/if}}</textarea> 
+</td>
+            
+</table> <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >Retailer/Customer</th><th>Customer #</th><th >Received How</th><th >Complaint Status</th></tr></thead> 
+    
+           <td><i class="material-icons">
+shopping_cart
+</i>&nbsp<input type="text" id="RetailerCustomer" name="RetailerCustomer" value="{{data.RetailerCustomer}}"></td>
+    
+               <td><i class="material-icons">
+fingerprint
+</i>&nbsp<input type="text" id="CustNum" name="CustNum"  value="{{data.CustNum}}"></td>
+
+            <td> <i class="material-icons">
+swap_horiz
+</i>   &nbsp
+    <select id="HowReceived" name="HowReceived" >
+   <option selected="selected">{{data.HowReceived}}</option>
+        {{#each howReceived}}
+  <option value="{{this.howreceived}}">{{this.howreceived}}</option>
+        {{/each}}
+</select>
+    </td>    
+    <td>   <i class="material-icons">
+double_arrow
+</i> &nbsp
+    <select id="StatusOfComplaint" name="StatusOfComplaint">
+   <option selected="selected">{{data.StatusOfComplaint}}</option>
+        {{#each complaintStatus}}
+  <option value="{{this.status}}">{{this.status}}</option>
+        {{/each}}
+</select>
+</td>
+    </table> 
+ <table class="table table-bordered">
+    <thead class="bg-light"> <tr><th >Food Service</th><th >Gov Agency</th><th>DOI</th><th>CA Response</th></tr></thead>
+      
+        <td> <select id="FoodService" name="FoodService">
+    <option value="{{data.FoodService}}">{{data.FoodService}}</option>
+<option value="Yes">Yes</option> 
+  <option value="No">No</option>
+</select></td>
+        <td> <select id="GovAgency" name="GovAgency">
+    <option value="{{data.GovAgency}}">{{data.GovAgency}}</option>
+<option value="Yes">Yes</option> 
+  <option value="No">No</option>
+</select></td>
+             <td><i class="material-icons">
+today 
+</i> &nbsp<input type="text" id="DOI" name="DOI" value="{{data.DOI}}"></td>
+        
+                   <td><i class="material-icons">
+keyboard
+</i> &nbsp<input type="text" id="CAResponse" name="CAResponse" value="{{data.CAResponse}}"></td>
+                 
+                </table> 
+<br>
+<button type="button" class="btn btn-primary btn-lg btn-block"></button>
+     <br><br>
+
+      <table class="table table-bordered"><thead class="bg-light"><tr><th >Salut</th><th>First Name</th><th >MI </th><th >Last Name</th></tr></thead>
+          
+ <td> <i class="material-icons">
+perm_identity 
+</i> &nbsp 
+    <select id="Salutation" Name="Salutation">
+   <option selected="selected">{{data.Salutation}}</option>
+        {{#each salutations}}
+  <option value="{{this.salutation}}">{{this.salutation}}</option>
+        {{/each}}
+</select>
+</td>
+          
+   <td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input type="text" id="FirstName" name="FirstName" value="{{data.FirstName}}"></td>
+          
+
+<td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input style="width: 60%" type="text" id="MiddleInitial" name="MiddleInitial" value="{{data.MiddleInitial}}"></td>
+          
+<td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input type="text" id="LastName" name="LastName" value="{{data.LastName}}"></td>
+    
+        </table> 
+
+                <table class="table table-bordered"><thead class="bg-light"><tr><th >Address</th><th>Apt / Unit</th><th >City </th></tr></thead>
+                    
+           <td><i class="material-icons">
+house 
+</i> &nbsp <input type="text" id="Address1" name="Address1" value="{{data.Address1}}"></td>
+           <td><i class="material-icons">
+house 
+</i> &nbsp <input type="text" id="Address2" name="Address2" value="{{data.Address2}}"></td>
+    
+                                        
+                               <td><i class="material-icons">
+house 
+</i> &nbsp <input style="width: 75%" type="text" id="City" name="City" value="{{data.City}}"></td>
+        </table> 
+    
+                <table class="table table-bordered"><thead class="bg-light"><tr><th >State</th> <th>Zip</th> <th>Country</th></tr></thead>
+                    
+<td>  <i class="material-icons">
+house 
+</i> &nbsp   
+    <select id="State" name="State" >
+   <option selected="selected">{{data.ST}}</option>
+        {{#each stateOrProvince}}
+  <option value="{{this.stateorprovince}}">{{this.stateorprovince}}</option>
+        {{/each}}
+</select>
+    
+<datalist id="State">
+        {{#each stateOrProvince}}
+  <option value="{{this.stateorprovince}}">{{this.stateorprovince}}</option>
+        {{/each}}
+    </datalist>
+</td>
+              <td> <i class="material-icons">
+house 
+</i> &nbsp <input type="text" id="ZIP" name="ZIP" value="{{data.Zip}}"></td>
+                                    <td> <i class="material-icons">
+flag
+</i>  &nbsp 
+<select id="Country" name="Country">
+   <option selected="selected">{{data.Country}}</option>
+        {{#each countries}}
+  <option value="{{this.Country}}">{{this.Country}}</option>
+        {{/each}}
+</select>
+</td>
+    
+        </table> 
+                     <table class="table table-bordered">
+<thead class="bg-light">    
+    <tr><th >Phone Number</th><th >Cell Phone</th><th >Email</th> <th >Company</th></tr></thead>
+    
+           <td><i class="material-icons">
+phone
+</i>&nbsp<input type="text" id="PhoneNumber" name="PhoneNumber" value="{{data.PhoneNumber}}"></td>
+           <td><i class="material-icons">
+stay_current_portrait
+</i>&nbsp<input type="text" id="CellNumber" name="CellNumber" value="{{data.CellNumber}}"></td>
+           <td><i class="material-icons">
+email
+</i>&nbsp<input type="text" id="EmailAddress" name="EmailAddress" value="{{data.EmailAddress}}"></td>
+    
+               <td><i class="material-icons">
+domain
+</i>&nbsp<input type="text" id="CompanyName" name="CompanyName" value="{{data.CompanyName}}"></td>
+                    
+             </table>
+
+                    <table class="table table-bordered">
+
+    <thead class="bg-light">   <tr><th >Coupon 55</th><th >Coupon 400</th><th >Coupon 800</th><th >Coupon 65 CAN</th><th >Coupon 900 CAN</th><th >Coupon Amount</th></tr></thead>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<select id="Coupon55" name="Coupon55">
+    <option value="{{data.Coupon55}}">{{data.Coupon55}}</option>
+         {{#each arr}}
+<option value="{{this}}">{{this}}</option> 
+            {{/each}}
+</select>    
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<select id="Coupon400"  name="Coupon400">
+    <option value="{{data.Coupon400}}">{{data.Coupon400}}</option>
+         {{#each arr}}
+<option value="{{this}}">{{this}}</option> 
+            {{/each}}
+</select>       
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<select id="Coupon800" name="Coupon800">
+    <option value="{{data.Coupon800}}">{{data.Coupon800}}</option>
+         {{#each arr}}
+<option value="{{this}}">{{this}}</option> 
+            {{/each}}
+</select>   
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<select id="Coupon65CAN" name="Coupon65CAN">
+    <option value="{{data.Coupon65CAN}}">{{data.Coupon65CAN}}</option>
+         {{#each arr}}
+<option value="{{this}}">{{this}}</option> 
+            {{/each}}
+</select>     
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<select id="Coupon900CAN" name="Coupon900CAN">
+    <option value="{{data.Coupon900CAN}}">{{data.Coupon900CAN}}</option>
+         {{#each arr}}
+<option value="{{this}}">{{this}}</option> 
+            {{/each}}
+</select>       
+    </td>
+           <td> <i class="material-icons">
+attach_money 
+</i> &nbsp <input type="number" id="AmtofCoupon" name="AmtofCoupon" value="{{data.AmtofCoupon}}" step="0.01"></td>
+                    
+</table> <table class="table table-bordered">
+    
+    <thead class="bg-light"> <tr><th >GC Number</th><th >Type of Comp</th><th >Comp Amount</th></tr></thead>
+           <td><i class="material-icons">
+language
+</i>&nbsp<input type="text" id="GCNumber" name="GCNumber" value="{{data.GCNumber}}"></td>
+           <td><i class="material-icons">
+account_balance
+</i>&nbsp<input type="text" id="TypeofComp" name="TypeofComp" value="{{data.TypeofComp}}"></td>
+           <td> <i class="material-icons">
+attach_money 
+</i> &nbsp <input type="number" id="AmtofComp" name="AmtofComp" value="{{data.AmtofComp}}" step="0.01"></td>
+</table> 
+
+<table class="table table-bordered">
+    <thead class="bg-light"> <tr><th >Report Notes</th></tr></thead>
+           
+    <td> <i class="material-icons">
+announcement
+        </i>  <textarea id="ConsumerNotes" name="ConsumerNotes" rows="10" cols="125"> {{data.ConsumerNotes}} </textarea> </td>
+        </thead>
+    </table>
+    
+        <input id="btn" type="submit" class="btn btn-danger btn-lg" value="Update Record Now"> 
+    </form>

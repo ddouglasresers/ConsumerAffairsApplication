@@ -1,0 +1,153 @@
+    <head> 
+        
+<script>   
+    
+function scroller(){
+  var elem = document.getElementById('ConsumerNotes');
+  elem.scrollTop = elem.scrollHeight;
+ }        
+            
+</script>
+        
+        <style>
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .html-content, .html-content * {
+    visibility: visible;
+  }
+  .html-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+            
+  th{color:black;}
+</style>
+        
+</head>
+<input type="button" class="btn btn-primary btn-lg" value="Print Page / Save as PDF" onClick="scroller();window.print();">
+<div class='html-content'>
+    <br>
+        <img style="float:right"src="logos.png">
+    
+    
+<h1> CA# {{data.CANumber}}</h1>
+<hr>
+ <table class="table table-bordered"><thead class="bg-light"><tr><th >Receive Date</th><th >CA Agent</th><th >Product Name</th><th >UPC</th></tr></thead> 
+<td>{{data.ReceiveDate.[5]}}{{data.ReceiveDate.[6]}}/{{data.ReceiveDate.[8]}}{{data.ReceiveDate.[9]}}/{{data.ReceiveDate.[0]}}{{data.ReceiveDate.[1]}}{{data.ReceiveDate.[2]}}{{data.ReceiveDate.[3]}}</td>
+<td> {{data.CAAgent}}</td>
+<td> {{data.ProductName}}</td>       
+<td>{{data.UPC}}</td>
+    
+ </table>  <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >UBD</th><th>Size</th><th >Time</th><th >Complaint</th></tr></thead>
+    
+ <td>{{data.UBD}}</td>
+ <td>{{data.PackSize}}</td>
+ <td>{{data.Time}}</td>
+ <td> {{data.Complaint}} </td>
+    
+                </table> 
+        
+        <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th>Report Code</th><th>Plant</th><th>Product Comments</th></tr></thead>
+        
+    
+            <td> {{data.ReportCode}}  </td>
+    
+        <td>{{data.Plant}}
+</td>
+<td><textarea id="ProductComments" name="ProductComments" rows="5" cols="100%"> {{data.ProductComments}} </textarea> 
+</td>
+            
+</table> <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >Retailer/Customer</th><th>Customer #</th><th >Received How</th><th >Complaint Status</th></tr></thead> 
+    
+     <td>{{data.RetailerCustomer}}</td>
+     <td>{{data.CustNum}}</td>
+     <td>{{data.HowReceived}} </td>  
+     <td> {{data.StatusOfComplaint}} </td>
+    </table> 
+            
+ <table class="table table-bordered">
+    <thead class="bg-light"> <tr><th >Food Service</th><th >Gov Agency</th><th>DOI</th><th>CA Response</th></tr></thead>
+      
+        <td> {{data.FoodService}}</td>
+        <td> {{data.GovAgency}}</td>
+        <td>{{data.DOI}}</td>
+        <td>{{data.CAResponse}}</td>
+                 
+                </table> 
+     <br>
+
+      <table class="table table-bordered"><thead class="bg-light"><tr><th >Salut</th><th>First Name</th><th >MI </th><th >Last Name</th></tr></thead>
+          
+ <td> {{data.Salutation}}</td>      
+ <td>{{data.FirstName}}</td>
+ <td>{{data.MiddleInitial}}</td>  
+ <td>{{data.LastName}}</td>
+    
+        </table> 
+
+                <table class="table table-bordered"><thead class="bg-light"><tr><th >Address</th><th>Apt / Unit</th><th >City </th></tr></thead>
+                    
+           <td> {{data.Address1}}</td>
+           <td>{{data.Address2}}</td>
+           <td> {{data.City}}</td>
+        </table> 
+    
+<table class="table table-bordered"><thead class="bg-light"><tr><th >State</th> <th>Zip</th> <th>Country</th></tr></thead>
+                    
+<td> {{data.ST}} </td>
+<td> {{data.Zip}} </td>
+<td> {{data.Country}}</td>
+        </table> 
+                     <table class="table table-bordered">
+<thead class="bg-light">    
+    <tr><th >Phone Number</th><th >Cell Phone</th><th >Email</th> <th >Company</th></tr></thead>
+    
+           <td>{{data.PhoneNumber}}</td>
+           <td>{{data.CellNumber}}</td>
+           <td>{{data.EmailAddress}}</td>
+           <td>{{data.CompanyName}}</td>
+             </table>
+                         
+                    <table class="table table-bordered">
+
+    <thead class="bg-light">   <tr><th >Coupon 55</th><th >Coupon 400</th><th >Coupon 800</th><th >Coupon 65 CAN</th><th >Coupon 900 CAN</th><th >Coupon Amount</th></tr></thead>
+    
+    <td>{{data.Coupon55}}</td>
+    <td>{{data.Coupon400}}  </td>
+    <td>{{data.Coupon800}} </td>
+    <td>{{data.Coupon65CAN}} </td>
+    <td>{{data.Coupon900CAN}}</td>
+    <td>{{data.AmtofCoupon}} </td>
+                    
+</table> <table class="table table-bordered">
+    
+    <thead class="bg-light"> <tr><th >GC Number</th><th >Type of Comp</th><th >Comp Amount</th></tr></thead>
+    <td>{{data.GCNumber}}</td>
+    <td>{{data.TypeofComp}}</td>
+    <td>{{data.AmtofComp}}</td>
+        
+</table> 
+
+<table class="table table-bordered">
+    <thead class="bg-light"> <tr><th >Report Notes</th></tr></thead>
+           
+    <td> <textarea id="ConsumerNotes" name="ConsumerNotes" rows="8" cols="125" > {{data.ConsumerNotes}} </textarea> </td>
+    </table>
+
+    
+    <hr><center>
+    <p><b>Confidential and Trade Secret Information pursuant to 5 U.S.C Sec 552(b)(4)
+Not for further use or distribution.</b></p>
+    </center>
+          </div>
+<input type="button" class="btn btn-primary btn-lg" onclick="location.href='update?custid={{data.CustomerID}}&can={{data.CANumber}}#cont';" value="Go To The Update Page"/> <br><hr>

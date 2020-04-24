@@ -1,0 +1,176 @@
+  <div class="col-lg-63 mb-3">
+                <div class="card">
+{{#if qname}}
+{{#if qs}}
+{{#if rptResult}}
+{{#unless rptcode}}
+<h1 style="color:red;">You've failed to select a Report Code. Please go back and select one from the dropdown.</h1>
+{{/unless}}
+{{#if rptcode}}
+<h4>You've successfully generated a '{{qname}}' query for date range {{qs}} to {{qsto}}.</h4>
+<hr>
+
+<input id="btn" type="submit" class="btn btn-primary btn-block" value="Download Report in CSV Format" onclick="location.href='/csvqueries?fromdate={{fromdate}}&todate={{todate}}&qname={{qname}}&rpt={{#if rptcode}}{{rptcode}}{{/if}}{{#if upccode}}{{upccode}}{{/if}}';" download>  <br><br>
+{{/if}}
+{{/if}}
+{{/if}}
+
+{{#if qs}}
+{{#if rptResultSec}}
+{{#unless upccode}}
+<h1 style="color:red;">You've failed to select a UPC Code. Please go back and select one.</h1>
+{{/unless}}
+{{#if upccode}}
+<h4>You've successfully generated a '{{qname}}' query for date range {{qs}} to {{qsto}}.</h4>
+<hr>
+<input id="btn" type="submit" class="btn btn-primary btn-block" value="Download Report in CSV Format" onclick="location.href='/csvqueries?fromdate={{fromdate}}&todate={{todate}}&qname={{qname}}&rpt={{#if rptcode}}{{rptcode}}{{/if}}{{#if upccode}}{{upccode}}{{/if}}';" download>  <br><br>
+{{/if}}
+{{/if}}
+{{/if}}
+
+{{#unless rptResultSec}}
+{{#unless rptResult}}
+{{#if qs}}
+<h4>You've successfully generated a '{{qname}}' query for date range {{qs}} to {{qsto}}.</h4>
+<hr>
+
+<input id="btn" type="submit" class="btn btn-primary btn-block" value="Download Report in CSV Format" onclick="location.href='/csvqueries?fromdate={{fromdate}}&todate={{todate}}&qname={{qname}}&rpt={{#if rptcode}}{{rptcode}}{{/if}}{{#if upccode}}{{upccode}}{{/if}}';" download>  <br><br>
+
+{{/if}}
+{{/unless}}
+{{/unless}}
+{{/if}}
+
+{{#unless qname}}
+{{#if qs}}
+<h3> There are no queries for your selection. </h3>
+{{/if}}
+{{/unless}}
+
+{{#unless qs}}
+<style>
+    #btn {width:25%;}
+    #block {width: 75%;}
+
+</style>
+
+<center>
+    <form>
+               <div class="card-header">
+                              <h3 class="h5 mb-0">Select Date Range</h3>
+                  </div>
+
+                    <div class="form-group mb-4">
+                      
+                        <div style="float:left; width: 50%">
+                            Start
+                        <input type="date" id="fromdate" name="fromdate" value="" class="form-control form-icon-input-left">
+                        </div>
+                       <div style="float:right; width: 50%">
+                           End<input type="date" id="todate" name="todate" value="{{fullyearReformat}}" class="form-control form-icon-input-left"> </div>
+                    </div>      
+
+        
+        {{#if rc}}
+        <script>alert("Please choose a Report Code from the dropdown, and then press enter after selecting your date range.");</script>
+        Report Code: 
+<input type="text" class="form-control form-icon-input-left" name="ReportCode" list="ReportCode" placeholder="Select Report Code from Dropdown">      
+<datalist id="ReportCode">
+   <option selected="selected"></option>
+        {{#each reportCodes}}
+  <option value="{{this.reportcode}}">{{this.reportcode}}</option>
+        {{/each}}
+            </datalist>
+{{/if}}
+        
+             {{#if upc}}
+        <script>alert("Please input a UPC code, and then press enter after selecting your date range.");</script>
+
+       UPC:  <input type="text" name="UPC" class="form-control form-icon-input-left" placeholder="Input UPC Code">  
+        {{/if}}
+       
+<button type="button" class="btn btn-block btn-sm btn-primary"></button>
+<br>
+<span id="block" class="btn btn-warning btn-block">Monthly Reports</span>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Reports By Date">
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Reports By Code">
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="FO Only">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Preference Only">
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Feedback Only">
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Packaging Only">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-warning" value="Gift Card Accnts">
+<input type="submit" id="btn" class="btn btn-dark" value="Not in Use 1">
+<input type="submit" id="btn" class="btn btn-dark" value="Not in Use 2">
+<br> <br>
+<br>
+    
+    
+    
+    
+<span id="block" class="btn btn-primary btn-block">Private Label Reports</span>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Albertsons Safeway">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="ALDI">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Boston Market">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Hormel">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Costco">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Sams Club">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Sobeys">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Subway">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="SYSCO">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="Walmart">
+<input type="submit" id="btn" name="qname" class="btn btn-primary" value="7-11">
+<input type="submit" id="btn" class="btn btn-dark" value="Not in Use 3">
+<br> <br>
+<br>
+    
+    
+    
+<span id="block" class="btn btn-danger btn-block">Reser Brands Reports</span>  
+    <br>
+<input type="submit" id="btn" name="qname" class="btn btn-danger" value="MSB">
+<input type="submit" id="btn" name="qname" class="btn btn-danger" value="American Classics">
+<input type="submit" id="btn" name="qname" class="btn btn-danger" value="SMK">
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-danger" value="Snap Pack Only">
+<input type="submit" id="btn" name="qname" class="btn btn-danger" value="Co-Packed Reser Items">
+<input type="submit" id="btn" class="btn btn-dark" value="Not in Use 4">
+<br> <br>
+<br>
+    
+        
+    <div id="spec">
+    
+    <span id="block" class="btn btn-secondary btn-block">Special Reports</span>  
+    <br>
+<input type="submit" id="btn" name="qname" class="btn btn-secondary" value="Canada Complaints">
+<input type="submit" id="btn" name="qname" class="btn btn-secondary" value="Template for Imports">
+<input type="submit" id="btn" name="qname" class="btn btn-secondary" value="Reports by UPC">
+
+<br>
+<br>
+<input type="submit" id="btn" name="qname" class="btn btn-secondary" value="DSD">
+<input type="submit" id="btn" name="qname" class="btn btn-secondary" value="Leaker Project 2014">
+        </div>
+<br> 
+<br>
+    <input type="submit" class="btn btn-outline-danger" id="btn" name="qname" value="Recall Report">
+        <br>
+        <br>
+    </form>
+    </center>
+{{/unless}}
+      </div>
+</div>

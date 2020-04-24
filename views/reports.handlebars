@@ -1,0 +1,16 @@
+ <div class="col-lg-63 mb-3">
+                <div class="card">
+<center><h2>Weekly Reports</h2></center>
+<hr>
+    <form action="reportresult?q={{this.plant}}#cont">
+               
+<input type="text"  class="form-control" name="plant" list="plantname" placeholder="Select Plant from Dropdown">      
+    <datalist id="plantname">
+        {{#each plantNums}}
+  <option value="{{this.plant}}" >{{this.plant}} - {{this.plantname}}</option>
+        {{/each}}
+        </datalist>
+        <br>
+             <input type="submit" class="btn btn-lg btn-primary" value="Generate Weekly Plant Report" width="100px">
+</form>
+     </div></div>

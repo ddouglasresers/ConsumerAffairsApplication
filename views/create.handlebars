@@ -1,0 +1,319 @@
+<script>
+function upcVal() {
+let upc = document.getElementById("UPC").value;
+document.getElementById("ProductName").value = document.getElementById(upc).value;
+}
+    
+</script>
+
+<style>
+#ProductName{
+  text-transform: uppercase;
+}
+    
+th{color:black;}
+</style>
+
+<link rel="stylesheet" href="icons.css">
+
+<h2 id="h2">Create New Record</h2>
+<hr>
+<form method="POST">
+ <table class="table table-bordered"><thead class="bg-light"><tr><th >Receive Date</th><th >CA Agent</th><th >UPC</th><th>Product Name</th></tr></thead> 
+           <td><i class="material-icons">
+today 
+</i> &nbsp<input type="date" id="ReceiveDate" name="ReceiveDate" value="{{fullyearReformat}}"></td>
+  
+<td>   <i class="material-icons">
+person_pin
+</i> &nbsp
+    <select type="text" style="width: 45%"  name="CAAgent" list="CAAgent" required>      
+    <datalist id="CAAgent">
+     <option value=""></option>
+        {{#each caAgent}}
+  <option value="{{this.caagent}}">{{this.caagent}}</option>
+        {{/each}}
+        </datalist>
+</td>
+     
+             <td><i class="material-icons">
+language
+</i>&nbsp <input type="text" style="width: 65%" id="UPC" name="UPC" list="UPCLIST" onchange="upcVal()">      
+<datalist id="UPCLIST">
+   <option selected="selected"></option>
+        {{#each prodInfo}}
+  <option value="{{this.ProductID}}">{{this.ProductDescription}}</option>
+        {{/each}}
+            </datalist></td>
+     
+     <td><i class="material-icons">
+fastfood
+</i> &nbsp     <input type="text" style="width: 85%"  id="ProductName" name="ProductName" list="prod" required>        
+<datalist id="prod">
+   <option selected="selected"></option>
+        {{#each prodInfo}}
+  <option value="{{this.ProductDescription}}" id="{{this.ProductID}}">{{this.ProductID}}</option>
+        {{/each}}
+            </datalist></td>
+         
+     </table>  <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >UBD</th><th>Size</th><th >Time</th></tr></thead>
+    
+           <td><i class="material-icons">today </i> &nbsp<input type="date" id="UBD" name="UBD"></td>
+                 <td><i class="material-icons">
+square_foot
+</i>&nbsp<input type="text" style="width: 70%"id="PackSize" name="PackSize"></td>
+           <td><i class="material-icons">
+access_time
+</i>&nbsp<input type="text" style="width: 55%" id="Time" name="Time"></td>
+        
+                </table> 
+        
+        <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th>Report Code</th><th>Plant</th><th>Product Comments</th></tr></thead>
+        
+    
+            <td><i class="material-icons">
+report
+</i>&nbsp    
+<select type="text" style="width: 65%" name="ReportCode" list="ReportCode" required>      
+<datalist id="ReportCode">
+   <option selected="selected"></option>
+        {{#each reportCodes}}
+  <option value="{{this.reportcode}}">{{this.reportcode}}</option>
+        {{/each}}
+            </datalist>
+</td>
+    
+        <td> <i class="material-icons">
+store
+</i>   &nbsp
+<select type="text" style="width: 55%"  name="PlantNum" list="PlantNum" required>      
+<datalist id="PlantNum">
+       <option selected="selected"></option>
+       {{#each plantNums}}
+  <option value="{{this.plant}}">{{this.plant}}</option>
+        {{/each}}
+</datalist>
+</td>
+        <td>  <i class="material-icons">
+announcement
+</i>  &nbsp
+            <textarea id="ProductComments" name="ProductComments" rows="5" cols="75" required></textarea> 
+        
+            </td>
+            
+</table> <table class="table table-bordered">
+<thead class="bg-light">
+    <tr><th >Retailer/Customer</th><th>Customer #</th><th >Received How</th><th >Complaint Status</th></tr></thead> 
+    
+           <td><i class="material-icons">
+shopping_cart
+</i>&nbsp<input type="text" id="RetailerCustomer" name="RetailerCustomer"></td>
+    
+               <td><i class="material-icons">
+fingerprint
+</i>&nbsp<input type="text" id="CustNum" name="CustNum"></td>
+
+            <td> <i class="material-icons">
+swap_horiz
+</i>   &nbsp
+<select type="text" name="HowReceived" list="HowReceived" required>      
+<datalist id="HowReceived">
+       <option selected="selected"></option>
+        {{#each howReceived}}
+  <option value="{{this.howreceived}}">{{this.howreceived}}</option>
+        {{/each}}
+                </datalist>
+    </td>    
+    <td>   <i class="material-icons">
+double_arrow
+</i> &nbsp
+<select type="text" style="width: 75%" name="StatusOfComplaint" list="StatusOfComplaint" required>      
+<datalist id="StatusOfComplaint">
+       <option selected="selected"></option>
+        {{#each complaintStatus}}
+  <option value="{{this.status}}">{{this.status}}</option>
+        {{/each}}
+                        </datalist>
+</td>
+    
+   </table> 
+
+ <table class="table table-bordered">
+
+    
+     <thead class="bg-light"> <tr><th >Food Service</th><th >Gov Agency</th><th>DOI</th><th>CA Response</th></tr></thead>
+      
+        <td> <input type="radio" name="FoodService" > Yes    </td>
+        <td> <input type="radio" name="GovAgency" > Yes    </td>
+             <td><i class="material-icons">
+today 
+</i> &nbsp<input type="date" id="DOI" name="DOI"></td>
+        
+                   <td><i class="material-icons">
+keyboard
+</i> &nbsp<input type="text" id="CAResponse" name="CAResponse"></td>
+                 
+                </table> 
+<br>
+<button type="button" class="bg-primary btn-lg btn-block"></button>
+     <br><br>
+
+      <table class="table table-bordered"><thead class="bg-light"><tr><th >Salut</th><th>First Name</th><th >MI </th><th >Last Name</th></tr></thead>
+          
+ <td> <i class="material-icons">
+perm_identity 
+</i> &nbsp 
+<input type="text" style="width: 25%" name="Salutation" list="Salutation">      
+<datalist id="Salutation">
+        {{#each salutations}}
+  <option value="{{this.salutation}}">{{this.salutation}}</option>
+        {{/each}}
+</datalist>
+</td>
+          
+   <td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input type="text" id="FirstName" name="FirstName" ></td>
+          
+
+<td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input style="width: 25%" type="text" id="MiddleInitial" name="MiddleInitial"></td>
+          
+<td><i class="material-icons">
+perm_identity 
+</i> &nbsp <input type="text" id="LastName" name="LastName"></td>
+    
+ </table> 
+
+                <table class="table table-bordered"><thead class="bg-light"><tr><th >Address</th><th>Apt / Unit</th><th >City </th></tr></thead>
+                    
+           <td><i class="material-icons">
+house 
+</i> &nbsp <input type="text" style="width: 75%" id="Address1" name="Address1"></td>
+           <td><i class="material-icons">
+house 
+</i> &nbsp <input type="text" style="width: 35%" id="Address2" name="Address2"></td>
+    
+                                        
+                               <td><i class="material-icons">
+house 
+</i> &nbsp <input style="width: 75%" type="text" id="City" name="City"></td>
+                      </table> 
+    
+                <table class="table table-bordered"><thead class="bg-light"><tr><th >State</th> <th>Zip</th> <th>Country</th></tr></thead>
+                    
+<td>  <i class="material-icons">
+house 
+</i> &nbsp   
+<input type="text" style="width: 75%" name="StateorProvince" list="StateorProvince">      
+<datalist id="StateorProvince">
+        {{#each stateOrProvince}}
+  <option value="{{this.stateorprovince}}">{{this.stateorprovince}}</option>
+        {{/each}}
+    </datalist>
+</td>
+              <td> <i class="material-icons">
+house 
+</i> &nbsp <input type="text" style="width: 35%" id="Zip" name="Zip"></td>
+                                    <td> <i class="material-icons">
+flag
+</i>  &nbsp 
+<input type="text" style="width: 75%" name="Country" list="Country">      
+<datalist id="Country">
+        {{#each countries}}
+  <option value="{{this.Country}}">{{this.Country}}</option>
+        {{/each}}
+                    </datalist>
+</td>
+    
+                   </table> 
+                     <table class="table table-bordered">
+<thead class="bg-light">    
+    <tr><th >Phone Number</th><th >Cell Phone</th><th >Email</th> <th >Company</th></tr></thead>
+    
+           <td><i class="material-icons">
+phone
+</i>&nbsp<input type="text" id="PhoneNumber" name="PhoneNumber"></td>
+           <td><i class="material-icons">
+stay_current_portrait
+</i>&nbsp<input type="text" id="CellNumber" name="CellNumber"></td>
+           <td><i class="material-icons">
+email
+</i>&nbsp<input type="text" id="EmailAddress" name="EmailAddress"></td>
+    
+               <td><i class="material-icons">
+domain
+</i>&nbsp<input type="text" id="CompanyName" name="CompanyName"></td>
+                    
+                             </table>
+                      
+                    
+                    <table class="table table-bordered">
+
+    <thead class="bg-light">   <tr><th >Coupon 55</th><th >Coupon 400</th><th >Coupon 800</th><th >Coupon 65 CAN</th><th >Coupon 900 CAN</th><th >Coupon Amount</th></tr></thead>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<input type="number" style="width: 25%" name="Coupon55" value="0">       
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<input type="number" style="width: 25%" name="Coupon400" value="0">         
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<input type="number" style="width: 25%" name="Coupon800" value="0">       
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<input type="number" style="width: 25%" name="Coupon65" value="0">       
+    </td>
+    
+    <td><i class="material-icons">
+receipt
+</i>
+<input type="number" style="width: 25%" name="Coupon900" value="0">        
+    </td>
+
+           <td> <i class="material-icons">
+attach_money 
+</i> &nbsp <input type="number" style="width: 75%" id="AmtofCoupon" name="AmtofCoupon" value="0" step="0.01"></td>
+                    
+                            </table> <table class="table table-bordered">
+
+    
+    <thead class="bg-light"> <tr><th >GC Number</th><th >Type of Comp</th><th >Comp Amount</th></tr></thead>
+           <td><i class="material-icons">
+language
+</i>&nbsp<input type="text" id="GCNumber" name="GCNumber"></td>
+           <td><i class="material-icons">
+account_balance
+</i>&nbsp<input type="text" id="TypeofComp" name="TypeofComp"></td>
+           <td> <i class="material-icons">
+attach_money 
+</i> &nbsp <input type="number" id="AmtofComp" name="AmtofComp" value="0" step="0.01"></td>
+                 
+                           </table> 
+                        <table class="table table-bordered">
+    <thead class="bg-light"> <tr><th >Report Notes</th></tr></thead>
+           
+    <td> <i class="material-icons">
+announcement
+        </i> <textarea id="ConsumerNotes" name="ConsumerNotes" rows="5" cols="125"></textarea> </td>
+        </thead>
+                        </table>   
+    
+        <input id="btn" type="submit" class="btn btn-primary btn-lg" value="Create This Record Now"> 
+    </form>

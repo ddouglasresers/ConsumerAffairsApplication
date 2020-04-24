@@ -1,0 +1,61 @@
+{{#if queryString}}
+{{#if data.length}}
+<input id="btn" type="submit" class="btn btn-lg btn-primary" value="Download Report in CSV Format" onclick="location.href='/csv?plant={{queryString}}';">  <br>
+ <div class="col-lg-63 mb-3">
+                <div class="card">
+<h1> Plant # {{queryString}} - {{plantName}}</h1>
+                    
+                         </div> </div>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Date Range</th>
+      <th scope="col">Plant Record Count</th>
+      <th scope="col">All Plants Record Count</th>
+    <th scope="col">Plant Record Count Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{weekAgo}} to {{fullyear}}</td>
+      <td>{{data.length}}</td>
+      <td>{{reportCount}}</td>
+      <td>{{reportPercent}}%</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Most Recurring Report Code</th>
+      <th scope="col">Report Code Count</th>
+      <th scope="col">All Report Codes Count for this Plant</th>
+      <th scope="col">Report Code Percentage</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{reportCodeName}} ({{reportCodeDescription}})</td>
+      <td>{{reportCodeCount}}</td>
+        <td>{{data.length}}</td>
+      <td>{{reportCodePercent}}%</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+{{/if}}
+
+{{#if queryString}}
+{{#unless data.length}}
+<h2><b>Plant {{queryString}}</b> has no records for the last week.</h2>
+<hr> 
+<h3><a href="reports#cont">Click here</a> to go back to weekly reports.</h3>
+{{/unless}}
+{{/if}}
+{{else}}
+<h3> There appears to be an issue with your selection.</h3>
+<hr>
+<h3><a href="reports#cont">Click here</a> to go back and try again.</h3>
+{{/if}}
